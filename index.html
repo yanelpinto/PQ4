@@ -34,7 +34,6 @@ if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonVal
 {
 //Evaluate previous data to conserve order of operations.
 dispText = eval(evalText + eval(userInput));
-alert(evalText + eval(userInput));
 evalText = dispText + buttonValue;
 userInput = ""
 calculator.display.value = dispText;
@@ -57,6 +56,11 @@ else if (userInput == '0' && buttonValue != '.')
 {
 userInput = buttonValue;
 calculator.display.value = userInput;
+}
+else if (buttonValue == "=")
+{
+dispText = eval(evalText + userInput);
+calculator.display.value = dispText;
 }
 else
 {
