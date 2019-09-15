@@ -19,7 +19,7 @@ var dispText;
 userInput = "";
 lastval = "";
 dispval = "";
-evalText = "";
+evalText = "0";
 clearText = "AC";
 
 function myCalc(buttonValue)
@@ -38,10 +38,18 @@ evalText = dispText + buttonValue;
 userInput = ""
 calculator.display.value = dispText;
 }
-else if (buttonValue == 'clear')
+else if (buttonValue == 'clear' && calculator.clear.value == "C")
 {
 userInput = "0"
 calculator.clear.value = "AC"
+calculator.display.value = userInput;
+}
+else if (buttonValue == 'clear' && calculator.clear.value != "C")
+{
+userInput = "0"
+lastval = "";
+dispval = "";
+evalText = "0";
 calculator.display.value = userInput;
 }
 else if (userInput == '0' && buttonValue != '.')
