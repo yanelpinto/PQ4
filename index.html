@@ -30,13 +30,18 @@ if ((lastval == '+' || lastval == '-' || lastval == '*' || lastval == '/') && (b
 evalText = evalText.substring(0,evalText.length - 1) + buttonValue;
 userInput = 0;
 }
-if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/'))
+if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/') && (lastval != 'clear'))
 {
 //Evaluate previous data to conserve order of operations.
 dispText = eval(evalText + eval(userInput));
 evalText = dispText + buttonValue;
 userInput = ""
 calculator.display.value = dispText;
+}
+else if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/') && (lastval == 'clear'))
+{
+userInput = "0";
+calculator.display.value = userInput;
 }
 else if (buttonValue == 'clear' && calculator.clear.value == "C")
 {
@@ -48,7 +53,6 @@ calculator.display.value = userInput;
 }
 else
 {
-alert(userInput);
 calculator.clear.value = "AC";
 calculator.display.value = dispText;
 userInput = "0";
@@ -56,11 +60,11 @@ userInput = "0";
 }
 else if (buttonValue == 'clear' && calculator.clear.value != "C")
 {
-userInput = "0"
-lastval = "";
-dispval = "";
-evalText = "0+";
-calculator.display.value = userInput;
+		userInput = "0"
+		lastval = "";
+		dispval = "";
+		evalText = "0+";
+		calculator.display.value = userInput;
 }
 else if (userInput == '0' && buttonValue != '.')
 {
