@@ -10,22 +10,40 @@
 <script>
 //Javascript Calculator Functions
 //Initial Variables
-var userInput
-var lastval
+var userInput;
+var lastval;
+var dispval;
+var clearText;
+var evalText;
+var dispText;
 userInput = "";
 lastval = "";
-	
+dispval = "";
+evalText = "";
+clearText = "AC";
+
 function myCalc(buttonValue)
 {
 //Handle multiple operator entries
 if ((lastval == '+' || lastval == '-' || lastval == '*' || lastval == '/') && (buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/'))
 {
-userInput = userInput.substring(0,userInput.length - 1);
+evalText = evalText.substring(0,evalText.length - 1) + buttonValue;
+userInput = 0;
 }
+if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/'))
+{
+//Evaluate previous data to conserve order of operations.
+dispText = eval(evalText + eval(userInput));
+evalText = dispText + buttonValue;
+userInput = ""
+calculator.display.value = dispText;
+}
+else
+{
 userInput += buttonValue;
-alert(userInput);
+calculator.display.value = userInput;
+}
 lastval = buttonValue;
-document.write("calculator.display.value = " + userInput);
 }
 </script>
 		 
@@ -58,7 +76,7 @@ document.write("calculator.display.value = " + userInput);
             </tr>
             <tr>
                <td><input type="button" id="clear" name="clear" value="AC" onclick="myCalc('clear')"></td>
-               <td><input type="button" name="zero" value="0" onclick="myCalc(0)"></td>
+				<td><input type="button" name="zero" value="0" onclick="myCalc(0)"></td>
 				<td><input type="button" class="decimal" value="." onclick="myCalc('.')"></td>
                <td><input type="button" class="operator" name="div" value="/" onclick="myCalc('/')"></td>
 				<td><input type="button" name="equal" value="=" onclick="myCalc('=')"></td>
