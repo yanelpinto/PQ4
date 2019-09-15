@@ -38,6 +38,17 @@ evalText = dispText + buttonValue;
 userInput = ""
 calculator.display.value = dispText;
 }
+else if (buttonValue == 'clear')
+{
+alert("Why?")
+userInput = "0"
+calculator.display.value = userInput;
+}
+else if (userInput == '0' && buttonValue != '.')
+{
+userInput = buttonValue;
+calculator.display.value = userInput;
+}
 else
 {
 userInput += buttonValue;
