@@ -25,11 +25,16 @@ clearText = "AC";
 function myCalc(buttonValue)
 {
 //Handle multiple operator entries
+//If condition #1
 if ((lastval == '+' || lastval == '-' || lastval == '*' || lastval == '/') && (buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/'))
 {
 evalText = evalText.substring(0,evalText.length - 1) + buttonValue;
 userInput = 0;
 }
+
+//If condition #2
+	
+//Operator and last NOT clear
 if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/') && (lastval != 'clear'))
 {
 //Evaluate previous data to conserve order of operations.
@@ -38,25 +43,29 @@ evalText = dispText + buttonValue;
 userInput = ""
 calculator.display.value = dispText;
 }
+	
+//Operator and last IS clear
 else if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/') && (lastval == 'clear'))
 {
 userInput = "0";
-calculator.display.value = userInput;
+calculator.display.value = dispText;
 }
+	
+//Clear Handling
 else if (buttonValue == 'clear' && calculator.clear.value == "C")
 {
-if ((lastval != '+' || lastval != '-' || lastval != '*' || lastval == '/'))
-{
-calculator.clear.value = "AC";
-userInput = "0";
-calculator.display.value = userInput;
-}
-else
-{
-calculator.clear.value = "AC";
-calculator.display.value = dispText;
-userInput = "0";
-}
+	if ((lastval != '+' || lastval != '-' || lastval != '*' || lastval != '/'))
+	{
+		calculator.clear.value = "AC";
+		userInput = "0";
+		calculator.display.value = dispText;
+	}
+	else
+	{
+		calculator.clear.value = "AC";
+		calculator.display.value = dispText;
+		userInput = "0";
+	}
 }
 else if (buttonValue == 'clear' && calculator.clear.value != "C")
 {
@@ -66,22 +75,48 @@ else if (buttonValue == 'clear' && calculator.clear.value != "C")
 		evalText = "0+";
 		calculator.display.value = userInput;
 }
+	
+//Handling Zero value condition
 else if (userInput == '0' && buttonValue != '.')
 {
 userInput = buttonValue;
 calculator.display.value = userInput;
 }
+	
+//Handling Period
+else if (buttonValue == '.')
+{
+	if (userInput.search('.') == -1)
+	{
+		if (userInput == "")
+		{
+		userInput = "0";
+		}
+		userInput += buttonValue;
+		calculator.display.value = userInput;
+	}
+	else
+	{
+	//Do nothing if period already exists in string.
+	}
+}
+	
+//Handling Equals
 else if (buttonValue == "=")
 {
 dispText = eval(evalText + userInput);
 calculator.display.value = dispText;
 }
+	
+//Else (String concatenation)
 else
 {
 calculator.clear.value = "C"
 userInput += buttonValue;
 calculator.display.value = userInput;
 }
+	
+//Last Conditions
 lastval = buttonValue;
 }
 </script>
