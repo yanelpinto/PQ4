@@ -40,10 +40,19 @@ calculator.display.value = dispText;
 }
 else if (buttonValue == 'clear' && calculator.clear.value == "C")
 {
-//evalText = evalText.substring(0,evalText.length -1);
-calculator.clear.value = "AC"
+if ((lastval != '+' || lastval != '-' || lastval != '*' || lastval == '/'))
+{
+calculator.clear.value = "AC";
+userInput = "0";
+calculator.display.value = userInput;
+}
+else
+{
+alert(userInput);
+calculator.clear.value = "AC";
 calculator.display.value = dispText;
-userInput = "0"
+userInput = "0";
+}
 }
 else if (buttonValue == 'clear' && calculator.clear.value != "C")
 {
