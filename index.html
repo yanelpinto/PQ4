@@ -40,9 +40,9 @@ calculator.display.value = dispText;
 }
 else if (buttonValue == 'clear' && calculator.clear.value == "C")
 {
-userInput = "0"
+evalText = evalText.substring(0,evalText.length -1);
 calculator.clear.value = "AC"
-calculator.display.value = userInput;
+calculator.display.value = dispText;
 }
 else if (buttonValue == 'clear' && calculator.clear.value != "C")
 {
