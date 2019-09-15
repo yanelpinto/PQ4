@@ -16,11 +16,13 @@ var dispval;
 var clearText;
 var evalText;
 var dispText;
+var skip;
 userInput = "";
 lastval = "";
 dispval = "";
 evalText = "0+";
 clearText = "AC";
+skip = 1;
 
 function myCalc(buttonValue)
 {
@@ -29,11 +31,17 @@ function myCalc(buttonValue)
 if ((lastval == '+' || lastval == '-' || lastval == '*' || lastval == '/') && (buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/'))
 {
 evalText = evalText.substring(0,evalText.length - 1) + buttonValue;
-userInput = 0;
+//userInput = userInput.substring(0,userInput.length -1);
+skip = 0;
+if (userInput = "")
+{
+userInput = "0";
+}
+alert(evalText);
 }
 
+if (skip == 1) {
 //If condition #2
-	
 //Operator and last NOT clear
 if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/') && (lastval != 'clear'))
 {
@@ -42,6 +50,7 @@ dispText = eval(evalText + eval(userInput));
 evalText = dispText + buttonValue;
 userInput = ""
 calculator.display.value = dispText;
+alert(evalText);
 }
 	
 //Operator and last IS clear
@@ -117,7 +126,9 @@ calculator.display.value = userInput;
 }
 	
 //Last Conditions
+}
 lastval = buttonValue;
+skip = 1;
 }
 </script>
 		 
