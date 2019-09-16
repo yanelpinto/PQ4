@@ -112,12 +112,16 @@ else if (buttonValue == '.')
 }
 	
 //Handling Equals
-else if (buttonValue == "=")
+else if (buttonValue == "=" && lastval != "=")
 {
 dispText = eval(evalText + userInput);
 calculator.display.value = dispText;
 }
-	
+else if (buttonValue == "=" && lastval == "=")
+{
+dispText = eval(dispText + evalText.substring(evalText.length,1) + userInput);
+calculator.display.value = dispText;
+}
 //Else (String concatenation)
 else
 {
