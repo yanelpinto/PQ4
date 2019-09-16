@@ -17,11 +17,13 @@ var clearText;
 var evalText;
 var dispText;
 var skip;
+var AC;
 userInput = "";
 lastval = "";
 dispval = "";
 evalText = "0+";
 clearText = "AC";
+dispText = "0";
 skip = 1;
 
 function myCalc(buttonValue)
@@ -52,7 +54,6 @@ userInput = ""
 calculator.display.value = dispText;
 //alert(evalText);***
 }
-	
 //Operator and last IS clear
 else if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/') && (lastval == 'clear'))
 {
@@ -67,7 +68,7 @@ else if (buttonValue == 'clear' && calculator.clear.value == "C")
 	{
 		calculator.clear.value = "AC";
 		userInput = "0";
-		calculator.display.value = dispText;
+		calculator.display.value = "0";
 	}
 	else
 	{
@@ -90,13 +91,14 @@ else if (buttonValue == 'clear' && calculator.clear.value != "C")
 else if (userInput == '0' && buttonValue != '.')
 {
 userInput = buttonValue;
+calculator.clear.value = "C";
 calculator.display.value = userInput;
 }
 	
 //Handling Period
 else if (buttonValue == '.')
 {
-	if (userInput.search('.') == -1)
+	if (userInput.search('.') == -1 || userInput.search('.') == 0)
 	{
 		if (userInput == "")
 		{
@@ -104,6 +106,7 @@ else if (buttonValue == '.')
 		}
 		userInput += buttonValue;
 		calculator.display.value = userInput;
+		calculator.clear.value = "C";
 	}
 	else
 	{
@@ -125,15 +128,15 @@ calculator.display.value = dispText;
 //Else (String concatenation)
 else
 {
-calculator.clear.value = "C"
+calculator.clear.value = "C";
 userInput += buttonValue;
 calculator.display.value = userInput;
 }
 	
 //Last Conditions
 }
-lastval = buttonValue;
 skip = 1;
+lastval = buttonValue;
 }
 </script>
 		 
