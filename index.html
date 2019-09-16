@@ -25,6 +25,7 @@ evalText = "0+";
 clearText = "AC";
 dispText = "0";
 skip = 1;
+flag = 1;
 
 function myCalc(buttonValue)
 {
@@ -125,20 +126,17 @@ else if (buttonValue == '.')
 //Handling Equals
 else if (buttonValue == "=" && lastval != "=")
 {
-alert("Test1")
 dispText = eval(evalText + userInput);
 calculator.display.value = dispText;
 }
 else if (buttonValue == "=" && lastval == "=")
 {
-alert(dispText + evalText.substr(-1) + userInput)
 dispText = eval(dispText + evalText.substr(-1) + userInput);
 calculator.display.value = dispText;
 }
 //Else (String concatenation)
 else
 {
-alert("Test3")
 calculator.clear.value = "C";
 userInput += buttonValue;
 calculator.display.value = userInput;
@@ -148,6 +146,7 @@ calculator.display.value = userInput;
 }
 skip = 1;
 lastval = buttonValue;
+alert(userInput)
 }
 </script>
 		 
