@@ -48,11 +48,19 @@ if (skip == 1) {
 if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/') && (lastval != 'clear'))
 {
 //Evaluate previous data to conserve order of operations.
-dispText = eval(evalText + eval(userInput));
-evalText = dispText + buttonValue;
-userInput = ""
-calculator.display.value = dispText;
-//alert(evalText);***
+	if (lastval != "=")
+	{
+		dispText = eval(evalText + eval(userInput));
+		evalText = dispText + buttonValue;
+		userInput = ""
+		calculator.display.value = dispText;
+	}
+	else
+	{
+		evalText = dispText + buttonValue
+		userInput = ""
+		calculator.display.value = dispText;	
+	}
 }
 //Operator and last IS clear
 else if ((buttonValue == '+' || buttonValue == '-' || buttonValue == '*' || buttonValue == '/') && (lastval == 'clear'))
@@ -117,17 +125,20 @@ else if (buttonValue == '.')
 //Handling Equals
 else if (buttonValue == "=" && lastval != "=")
 {
+alert("Test1")
 dispText = eval(evalText + userInput);
 calculator.display.value = dispText;
 }
 else if (buttonValue == "=" && lastval == "=")
 {
-dispText = eval(dispText + evalText.substring(evalText.length,1) + userInput);
+alert(dispText + evalText.substr(-1) + userInput)
+dispText = eval(dispText + evalText.substr(-1) + userInput);
 calculator.display.value = dispText;
 }
 //Else (String concatenation)
 else
 {
+alert("Test3")
 calculator.clear.value = "C";
 userInput += buttonValue;
 calculator.display.value = userInput;
