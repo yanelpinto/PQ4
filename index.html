@@ -128,20 +128,17 @@ else if (buttonValue == '.')
 //Handling Equals
 else if (buttonValue == "=" && lastval != "=")
 {
-alert("bug1")
 dispText = eval(evalText + userInput);
 calculator.display.value = dispText;
 }
 else if (buttonValue == "=" && lastval == "=")
 {
-alert("bug2")
 dispText = eval(dispText + evalText.substr(-1) + userInput);
 calculator.display.value = dispText;
 }
 //Else (String concatenation)
 else
 {
-alert("bug3")
 calculator.clear.value = "C";
 userInput += buttonValue;
 calculator.display.value = userInput;
