@@ -97,9 +97,12 @@ else if (buttonValue == 'clear' && calculator.clear.value != "C")
 //Handling Zero value condition
 else if (userInput == '0' && buttonValue != '.')
 {
+if (buttonValue != "=")
+{
 userInput = buttonValue;
 calculator.clear.value = "C";
 calculator.display.value = userInput;
+}
 }
 	
 //Handling Period
