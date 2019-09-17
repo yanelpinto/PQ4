@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>PQ4</title>
-<link rel="style" href="style.css">
 </head>
 	 <body>
 		 
@@ -17,12 +16,12 @@ var clearText;
 var evalText;
 var dispText;
 var skip;
-var AC;
+var C;
 userInput = "";
 lastval = "";
 dispval = "";
 evalText = "0+";
-clearText = "AC";
+clearText = "C";
 dispText = "0";
 skip = 1;
 flag = 1;
@@ -75,13 +74,13 @@ else if (buttonValue == 'clear' && calculator.clear.value == "C")
 {
 	if ((lastval != '+' || lastval != '-' || lastval != '*' || lastval != '/'))
 	{
-		calculator.clear.value = "AC";
+		calculator.clear.value = "C";
 		userInput = "0";
 		calculator.display.value = "0";
 	}
 	else
 	{
-		calculator.clear.value = "AC";
+		calculator.clear.value = "C";
 		calculator.display.value = dispText;
 		userInput = "0";
 	}
@@ -151,7 +150,7 @@ alert(userInput)
 </script>
 		 
  
-		 <h1> HOLA</h1>
+		 <h1> Calculator</h1>
       <form name="calculator">
          <table>
             <tr>
@@ -178,7 +177,7 @@ alert(userInput)
                <td><input type="button" class="operator" name="times" value="x" onclick="myCalc('*')"></td>
             </tr>
             <tr>
-               <td><input type="button" id="clear" name="clear" value="AC" onclick="myCalc('clear')"></td>
+               <td><input type="button" id="clear" name="clear" value="C" onclick="myCalc('clear')"></td>
 				<td><input type="button" name="zero" value="0" onclick="myCalc(0)"></td>
 				<td><input type="button" class="decimal" value="." onclick="myCalc('.')"></td>
                <td><input type="button" class="operator" name="div" value="/" onclick="myCalc('/')"></td>
